@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:text="New Text"
     android:layout_centerInParent="true"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:padding="15dp"
+    android:textSize="@dimen/abc_text_size_large_material"
+    android:fontFamily="sans-serif-light"
     android:id="@+id/textView"/>

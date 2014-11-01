@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
 
         mTitle = "test";
 
-        mPlanetTitles = new String[]{"one", "two", "three"};
+        mPlanetTitles = new String[]{"Notes", "Pinned", "Archived", "Settings"};
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
