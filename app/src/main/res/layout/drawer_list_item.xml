@@ -7,4 +7,6 @@
     android:padding="15dp"
     android:textSize="@dimen/abc_text_size_large_material"
     android:fontFamily="sans-serif-light"
-    android:id="@+id/textView"/>
+    android:background="@drawable/drawer_list_item_selector"
+    android:id="@+id/textView"
+    />

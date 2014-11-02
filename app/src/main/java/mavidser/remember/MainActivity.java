@@ -78,6 +78,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerList.setItemChecked(0, true);
     }
 
     public boolean isDrawerOpen() {
