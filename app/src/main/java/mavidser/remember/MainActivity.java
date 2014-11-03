@@ -2,7 +2,10 @@ package mavidser.remember;
 
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -18,9 +21,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements Notes.OnFragmentInteractionListener {
 
-    private String[] mPlanetTitles;
+    private String[] mDrawerItems;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private CharSequence mTitle;
@@ -33,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
 
         mTitle = "test";
 
-        mPlanetTitles = new String[]{"Notes", "Pinned", "Archived", "Settings"};
+        mDrawerItems = new String[]{"Notes", "Pinned", "Archived", "Settings"};
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -41,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
 
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mPlanetTitles));
+                R.layout.drawer_list_item, mDrawerItems));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 
@@ -78,7 +81,10 @@ public class MainActivity extends ActionBarActivity {
         });
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mDrawerList.setItemChecked(0, true);
+        //mDrawerList.setItemChecked(0, true);
+        if (savedInstanceState == null) {
+            selectItem(0);
+        }
     }
 
     public boolean isDrawerOpen() {
@@ -117,12 +123,27 @@ public class MainActivity extends ActionBarActivity {
         actionBar.setTitle(R.string.app_name);
     }
 
+    public void showFragment(int position){
+
+        mTitle = mDrawerItems[position];
+        Notes cFragment = new Notes();
+        Bundle data = new Bundle();
+        data.putInt("position", position);
+        cFragment.setArguments(data);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.content_frame, cFragment);
+        ft.commit();
+    }
+    
     private void selectItem(int position) {
         Toast.makeText(this, R.string.app_name, Toast.LENGTH_SHORT).show();
 
         // Highlight the selected item, update the title, and close the drawer
+        showFragment(position);
         mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
+        setTitle(mDrawerItems[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
@@ -130,6 +151,11 @@ public class MainActivity extends ActionBarActivity {
     public void setTitle(CharSequence title) {
         mTitle = title;
         getSupportActionBar().setTitle(mTitle);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {

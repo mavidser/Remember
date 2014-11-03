@@ -1890,11 +1890,12 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f070030;
         public static final int action_mode_bar_stub=0x7f07002f;
         public static final int action_mode_close_button=0x7f070022;
-        public static final int action_search=0x7f070045;
+        public static final int action_search=0x7f070046;
         public static final int activity_chooser_view_content=0x7f070023;
         public static final int always=0x7f07000f;
         public static final int beginning=0x7f07000a;
         public static final int bottom=0x7f070016;
+        public static final int button=0x7f070045;
         public static final int checkbox=0x7f07002b;
         public static final int collapseActionView=0x7f070011;
         public static final int content_frame=0x7f070042;
@@ -1977,7 +1978,8 @@ containing a value of this type.
         public static final int abc_simple_dropdown_hint=0x7f030016;
         public static final int activity_main=0x7f030017;
         public static final int drawer_list_item=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int fragment_notes=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -2002,7 +2004,8 @@ containing a value of this type.
         public static final int app_name=0x7f0a0010;
         public static final int drawer_close=0x7f0a0011;
         public static final int drawer_open=0x7f0a0012;
-        public static final int hello_world=0x7f0a0013;
+        public static final int hello_blank_fragment=0x7f0a0013;
+        public static final int hello_world=0x7f0a0014;
     }
     public static final class style {
         public static final int AppTheme=0x7f0b0000;
