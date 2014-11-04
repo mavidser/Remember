@@ -23,9 +23,6 @@
         android:text="New Button"
         android:id="@+id/button" />
 
-
-
-
     </LinearLayout>
 
 </FrameLayout>

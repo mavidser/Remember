@@ -1,6 +1,7 @@
 package mavidser.remember;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -135,16 +136,25 @@ public class MainActivity extends ActionBarActivity implements Notes.OnFragmentI
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.content_frame, cFragment);
         ft.commit();
+
     }
     
     private void selectItem(int position) {
         Toast.makeText(this, R.string.app_name, Toast.LENGTH_SHORT).show();
 
-        // Highlight the selected item, update the title, and close the drawer
-        showFragment(position);
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mDrawerItems[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);
+        switch(position) {
+            case 3:
+                mDrawerLayout.closeDrawer(mDrawerList);
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                showFragment(position);
+                mDrawerList.setItemChecked(position, true);
+                setTitle(mDrawerItems[position]);
+                mDrawerLayout.closeDrawer(mDrawerList);
+                break;
+        }
     }
 
     @Override

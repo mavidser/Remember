@@ -22,6 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="mavidser.remember.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="mavidser.remember.MainActivity"
+            android:theme="@style/SettingsTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mavidser.remember.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
