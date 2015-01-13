@@ -168,6 +168,11 @@ public class MainActivity extends ActionBarActivity implements Notes.OnFragmentI
 
     }
 
+    public void launchCreateNote(View view) {
+        Intent intent = new Intent(this, CreateNote.class);
+        startActivity(intent);
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {

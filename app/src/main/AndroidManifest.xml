@@ -25,6 +25,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="mavidser.remember.MainActivity" />
         </activity>
+        <activity
+            android:name=".CreateNote"
+            android:label="@string/title_activity_create_note"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="mavidser.remember.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
