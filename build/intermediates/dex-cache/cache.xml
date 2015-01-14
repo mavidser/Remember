@@ -8,6 +8,12 @@
         revision="19.1.0"
         sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0"/>
     <item
+        dex="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/pre-dexed/debug/classes-e3e68f7de7e8f98de9be876244dd413cd23758da.jar"
+        jar="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
+    <item
         dex="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/pre-dexed/debug/classes-cba0c1df9b7dfe09244c058a084a44d3e747f965.jar"
         jar="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/classes.jar"
         jumboMode="false"
@@ -20,10 +26,10 @@
         revision="19.1.0"
         sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e"/>
     <item
-        dex="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/pre-dexed/debug/classes-e3e68f7de7e8f98de9be876244dd413cd23758da.jar"
-        jar="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/classes.jar"
+        dex="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/pre-dexed/debug/classes-9bc9e6463a38775c38122ac1e589a295d7e10b0e.jar"
+        jar="/home/sid/AndroidStudioProjects/Remember/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.0/classes.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="686344a780033e4ba22b926cd225f8d4941247e6"/>
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2"/>
 
 </pre-dex-items>

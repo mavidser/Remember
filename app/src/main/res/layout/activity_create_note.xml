@@ -9,13 +9,14 @@
     tools:context="mavidser.remember.CreateNote">
 
     <EditText
+        android:hint="Add note"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:minLines="3"
         android:inputType="textMultiLine"
         android:gravity="top"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/note_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
@@ -34,17 +35,37 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal"
         android:padding="6dp"
-        android:weightSum="1">
+        android:weightSum="2">
 
         <Button
-            android:background="@color/red_400"
+            android:background="@color/blue_400"
             android:textColor="@color/grey_50"
             android:textSize="20sp"
             android:padding="0dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Remember"
+            android:text="Save"
+            android:id="@+id/button"
+            android:layout_below="@+id/editText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="notify"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText" />
+
+        <Button
+            android:background="@color/light_green_400"
+            android:textColor="@color/grey_50"
+            android:textSize="20sp"
+            android:padding="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pin"
             android:id="@+id/button"
             android:layout_below="@+id/editText"
             android:layout_alignParentLeft="true"

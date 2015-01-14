@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 
 public class CreateNote extends ActionBarActivity {
@@ -57,15 +58,17 @@ public class CreateNote extends ActionBarActivity {
     public void notify(View view) {
         NotificationCompat.BigTextStyle notiStyle = new
                 NotificationCompat.BigTextStyle();
-        notiStyle.setBigContentTitle("Big Picture Expanded");
-        notiStyle.bigText("Nice big picjg kdfjgh fkdghdfkjgh dfkjghkjgh kdfjgh dkjfhgkdfjgh\n fture.\n" +
-                "jkdfkjgh kghdf kgh dfkjghf kdjghdfkjgh dfkjgh dfkjghkfjdgh fdhgjdfhkgjdfh gkhdfg k\n" +
-                "dfhg dsjf sjgdjsgf dh fdgfdsfhgfk hsdkjfhkdhg ushgkdjgh kduhg kjhg ");
+
+        EditText note = (EditText)findViewById(R.id.note_text);
+
+
+        notiStyle.setBigContentTitle("1 Note");
+        notiStyle.bigText(note.getText());
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World! hejhf kshf ksdf jdhf khg hkdghkjhfsdjgh fjdsgf jdg f")
+                        .setContentTitle("1 Note")
+                        .setContentText(note.getText())
                         .setOngoing(true)
                         .setStyle(notiStyle);
 

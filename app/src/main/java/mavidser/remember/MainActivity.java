@@ -113,6 +113,10 @@ public class MainActivity extends ActionBarActivity implements Notes.OnFragmentI
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+        if (item.getItemId() == R.id.action_new_note) {
+            Intent intent = new Intent(this, CreateNote.class);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -140,8 +144,6 @@ public class MainActivity extends ActionBarActivity implements Notes.OnFragmentI
     }
     
     private void selectItem(int position) {
-        Toast.makeText(this, R.string.app_name, Toast.LENGTH_SHORT).show();
-
         switch(position) {
             case 3:
                 mDrawerLayout.closeDrawer(mDrawerList);
@@ -166,11 +168,6 @@ public class MainActivity extends ActionBarActivity implements Notes.OnFragmentI
     @Override
     public void onFragmentInteraction(Uri uri) {
 
-    }
-
-    public void launchCreateNote(View view) {
-        Intent intent = new Intent(this, CreateNote.class);
-        startActivity(intent);
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
