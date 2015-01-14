@@ -24,26 +24,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: mavidser.remember" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00fb937f-3f86-4315-a476-ce00380f9fa9" name="Default" comment="drawer look">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/NoteAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/NoteInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notes_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/CreateNote.java" afterPath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/CreateNote.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/Notes.java" afterPath="$PROJECT_DIR$/app/src/main/java/mavidser/remember/Notes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/mavidser/remember/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/mavidser/remember/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_note.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_note.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/create_note.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/create_note.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notes.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notes.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="00fb937f-3f86-4315-a476-ce00380f9fa9" name="Default" comment="drawer look" />
     <ignored path="Remember.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
