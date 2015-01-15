@@ -3,8 +3,10 @@ package mavidser.remember;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.NotificationCompat;
@@ -15,6 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CreateNote extends ActionBarActivity {
 
@@ -43,7 +48,7 @@ public class CreateNote extends ActionBarActivity {
             return true;
         }
         if (id == android.R.id.home) {
-            Intent upIntent = NavUtils.getParentActivityIntent(this);
+//            Intent upIntent = NavUtils.getParentActivityIntent(this);
             onBackPressed();
             return true;
         }
@@ -53,6 +58,22 @@ public class CreateNote extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void saveNote(View view) {
+        NoteInfo note = new NoteInfo();
+        EditText note_content = (EditText)findViewById(R.id.note_text);
+        note.pinned = "0";
+        note.archived = "0";
+        note.content = note_content.getText().toString().trim();
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        note.date = dateFormat.format(date);
+
+        new NotesContract().createNote(view,note);
+
+        new NotesContract().readNotesList(view,1);
     }
 
     public void notify(View view) {
@@ -66,7 +87,7 @@ public class CreateNote extends ActionBarActivity {
         notiStyle.bigText(note.getText());
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.drawable.ic_remember_r)
                         .setContentTitle("1 Note")
                         .setContentText(note.getText())
                         .setOngoing(true)

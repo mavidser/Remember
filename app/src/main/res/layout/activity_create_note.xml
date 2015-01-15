@@ -50,7 +50,7 @@
             android:layout_below="@+id/editText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:onClick="notify"
+            android:onClick="saveNote"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
