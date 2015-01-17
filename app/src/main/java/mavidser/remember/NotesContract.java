@@ -50,8 +50,32 @@ public final class NotesContract {
             "DROP TABLE IF EXISTS " + NoteEntry.TABLE_NAME;
 
 
-    public void createNote(View view, NoteInfo note) {
-        NotesDbHelper mDbHelper = new NotesDbHelper(view.getContext());
+
+    public void updateNote(Context context, NoteInfo note) {
+
+        NotesDbHelper mDbHelper = new NotesDbHelper(context);
+
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+
+        ContentValues values = new ContentValues();
+        values.put(NoteEntry.COLUMN_NAME_ARCHIVED, note.archived);
+        values.put(NoteEntry.COLUMN_NAME_CONTENT, note.content);
+        values.put(NoteEntry.COLUMN_NAME_PINNED, note.pinned);
+
+        String selection = NoteEntry._ID + " LIKE ?";
+        String[] selectionArgs = { String.valueOf(note.id) };
+
+        int count = db.update(
+                NotesContract.NoteEntry.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+
+    public String createNote(Context context, NoteInfo note) {
+        NotesDbHelper mDbHelper = new NotesDbHelper(context);
 
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -67,6 +91,7 @@ public final class NotesContract {
                 null,
                 values);
         System.out.println(newRowId);
+        return ""+newRowId;
     }
 
     public List<NoteInfo> readNotesList(View view,int TYPE) {

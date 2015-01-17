@@ -1884,8 +1884,9 @@ containing a value of this type.
         public static final int ic_drawer=0x7f02003c;
         public static final int ic_launcher=0x7f02003d;
         public static final int ic_remember_r=0x7f02003e;
-        public static final int logo2=0x7f02003f;
-        public static final int navigation_drawer_shadow=0x7f020040;
+        public static final int line_divider=0x7f02003f;
+        public static final int logo2=0x7f020040;
+        public static final int navigation_drawer_shadow=0x7f020041;
     }
     public static final class id {
         public static final int action_archive=0x7f09004d;
@@ -1904,13 +1905,11 @@ containing a value of this type.
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
         public static final int action_new_note=0x7f090050;
-        public static final int action_search=0x7f090051;
         public static final int action_settings=0x7f09004f;
         public static final int activity_chooser_view_content=0x7f090023;
         public static final int always=0x7f09000f;
         public static final int beginning=0x7f09000a;
         public static final int bottom=0x7f090016;
-        public static final int button=0x7f090044;
         public static final int buttongroup=0x7f090042;
         public static final int checkbox=0x7f09002b;
         public static final int collapseActionView=0x7f090011;
@@ -1942,6 +1941,7 @@ containing a value of this type.
         public static final int normal=0x7f090000;
         public static final int note_text=0x7f090041;
         public static final int notes_list=0x7f09004a;
+        public static final int pinbutton=0x7f090044;
         public static final int progress_circular=0x7f09001c;
         public static final int progress_horizontal=0x7f09001d;
         public static final int radio=0x7f09002d;

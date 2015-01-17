@@ -9,11 +9,11 @@
         android:icon="@drawable/ic_action_content_add"
         appcompat:showAsAction="always|withText" />
 
-    <item android:id="@+id/action_search"
-        android:title="Search"
-        android:orderInCategory="100"
-        appcompat:showAsAction="always"
-        appcompat:actionViewClass="android.support.v7.widget.SearchView" />
+    <!--<item android:id="@+id/action_search"-->
+        <!--android:title="Search"-->
+        <!--android:orderInCategory="100"-->
+        <!--appcompat:showAsAction="always"-->
+        <!--appcompat:actionViewClass="android.support.v7.widget.SearchView" />-->
 
 </menu>
 <!-- From: file:/home/sid/AndroidStudioProjects/Remember/app/src/main/res/menu/main.xml -->

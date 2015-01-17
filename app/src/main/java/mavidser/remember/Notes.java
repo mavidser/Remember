@@ -99,6 +99,31 @@ public class Notes extends Fragment {
 
         recList = (RecyclerView) myView.findViewById(R.id.notes_list);
         recList.setHasFixedSize(true);
+
+        recList.addItemDecoration(new SimpleDividerItemDecoration(
+                getActivity().getApplicationContext()
+        ));
+
+
+        recList.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity().getBaseContext(),
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                        System.out.println("Position "+position);
+                        Intent intent = new Intent(getActivity().getApplicationContext(), CreateNote.class);
+//                        System.out.println(""+);
+                        intent.putExtra("id",noteslist.get(position).id);
+                        intent.putExtra("content",noteslist.get(position).content);
+                        intent.putExtra("pinned",noteslist.get(position).pinned);
+                        intent.putExtra("archived",noteslist.get(position).archived);
+                        startActivity(intent);
+                    }
+                })
+        );
+
+
+
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
@@ -119,7 +144,7 @@ public class Notes extends Fragment {
     @Override
     public void onResume()
     {
-        getActivity().runOnUiThread(run);
+//        getActivity().runOnUiThread(run);
         super.onResume();
     }
 

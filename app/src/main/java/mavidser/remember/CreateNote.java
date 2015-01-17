@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.text.DateFormat;
@@ -23,11 +24,41 @@ import java.util.Date;
 
 public class CreateNote extends ActionBarActivity {
 
+    private boolean EDITING = false;
+    private String _ID;
+    private boolean _PINNED = false;
+    private boolean _ARCHIVED = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent intent = getIntent();
+        String content = intent.getStringExtra("content");
+        String pinned = intent.getStringExtra("pinned");
+        String archived = intent.getStringExtra("archived");
+        _ID = intent.getStringExtra("id");
+        if (content != null) {
+            EDITING = true;
+            EditText note_content = (EditText) findViewById(R.id.note_text);
+            note_content.setText(content);
+            Button pinBtn = (Button) findViewById(R.id.pinbutton);
+            if (pinned.equals("1")) {
+                _PINNED = true;
+                pinBtn.setText("Unpin");
+                pinBtn.setBackgroundResource(R.color.red_300);
+            }
+            else {
+                _PINNED = false;
+            }
+            if (archived.equals("1")) {
+                _ARCHIVED = true;
+            }
+            else {
+                _ARCHIVED = false;
+            }
+        }
     }
 
 
@@ -53,47 +84,139 @@ public class CreateNote extends ActionBarActivity {
             return true;
         }
         if (id == R.id.action_archive) {
-            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            mNotifyMgr.cancel(1);
+            archiveNote();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void saveNote(View view) {
+    public void unpin(int n) {
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotifyMgr.cancel(Integer.parseInt(_ID));
+        NoteInfo note = generateNote(false);
+        note.id = _ID;
+        new NotesContract().updateNote(getBaseContext(), note);
+    }
+
+    public NoteInfo generateNote(boolean pinned) {
         NoteInfo note = new NoteInfo();
-        EditText note_content = (EditText)findViewById(R.id.note_text);
-        note.pinned = "0";
-        note.archived = "0";
+        EditText note_content = (EditText) findViewById(R.id.note_text);
+        if (pinned)
+            note.pinned = "1";
+        else
+            note.pinned = "0";
+        if (_ARCHIVED)
+            note.archived = "1";
+        else
+            note.archived = "0";
+        System.out.println(note.archived);
         note.content = note_content.getText().toString().trim();
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         note.date = dateFormat.format(date);
-
-        new NotesContract().createNote(view,note);
-
-        new NotesContract().readNotesList(view,1);
+        return note;
     }
 
-    public void notify(View view) {
+    public void saveNote(boolean pinned) {
+        NoteInfo note = generateNote(pinned);
+        if (note.content.isEmpty()) {
+            archiveNote();
+            return;
+        }
+        _ID = new NotesContract().createNote(getBaseContext(), note);
+        EDITING = true;
+        _PINNED = pinned;
+    }
+
+//    public void saveNote(View view) {
+//        saveNote(false);
+//    }
+
+    public void updateNote(boolean pinned) {
+        NoteInfo note = generateNote(pinned);
+        if (note.content.isEmpty()) {
+            archiveNote();
+            return;
+        }
+        note.id = _ID;
+//        System.out.println("Setting pin as "+note.pinned);
+        new NotesContract().updateNote(getBaseContext(), note);
+    }
+
+    public void archiveNote() {
+        try {
+            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            mNotifyMgr.cancel(Integer.parseInt(_ID));
+        } catch (Exception e) {}
+        NoteInfo note = generateNote(false);
+        if(EDITING || !note.content.isEmpty()) {
+            note.archived = "1";
+            note.id = _ID;
+            _ARCHIVED = true;
+            new NotesContract().updateNote(getBaseContext(), note);
+        }
+        onBackPressed();
+    }
+
+    public void pin(String note) {
+        if (note.isEmpty())
+            return;
         NotificationCompat.BigTextStyle notiStyle = new
                 NotificationCompat.BigTextStyle();
 
-        EditText note = (EditText)findViewById(R.id.note_text);
-
-
-        notiStyle.setBigContentTitle("1 Note");
-        notiStyle.bigText(note.getText());
+        notiStyle.setBigContentTitle("Remember ");
+        notiStyle.bigText(note);
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_remember_r)
-                        .setContentTitle("1 Note")
-                        .setContentText(note.getText())
+                        .setContentTitle("Remember")
+                        .setContentText(note)
                         .setOngoing(true)
                         .setStyle(notiStyle);
 
         NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(001, mBuilder.build());
+        mNotifyMgr.notify(Integer.parseInt(_ID), mBuilder.build());
+    }
+
+    public void pinPressed(View view) {
+        EditText note = (EditText) findViewById(R.id.note_text);
+        Button pinBtn = (Button) findViewById(R.id.pinbutton);
+        if (pinBtn.getText().toString().equals("Pin")) {
+
+            if (EDITING) {
+                updateNote(true);
+                _PINNED = true;
+            } else {
+                saveNote(true);
+            }
+
+            pin(note.getText().toString());
+            pinBtn.setText("Unpin");
+            pinBtn.setBackgroundResource(R.color.red_300);
+        } else {
+
+            unpin(1);
+            _PINNED = false;
+            pinBtn.setText("Pin");
+            pinBtn.setBackgroundResource(R.color.light_green_300);
+        }
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+//        System.out.println("Uh huh");
+
+        if (EDITING) {
+            if (_PINNED)
+                updateNote(true);
+            else
+                updateNote(false);
+        }
+        else {
+            saveNote(false);
+        }
     }
 }

@@ -609,8 +609,9 @@ int drawable ic_action_content_create 0x7f02003b
 int drawable ic_drawer 0x7f02003c
 int drawable ic_launcher 0x7f02003d
 int drawable ic_remember_r 0x7f02003e
-int drawable logo2 0x7f02003f
-int drawable navigation_drawer_shadow 0x7f020040
+int drawable line_divider 0x7f02003f
+int drawable logo2 0x7f020040
+int drawable navigation_drawer_shadow 0x7f020041
 int id action_archive 0x7f09004d
 int id action_bar 0x7f090033
 int id action_bar_activity_content 0x7f090017
@@ -627,13 +628,11 @@ int id action_mode_bar 0x7f090030
 int id action_mode_bar_stub 0x7f09002f
 int id action_mode_close_button 0x7f090022
 int id action_new_note 0x7f090050
-int id action_search 0x7f090051
 int id action_settings 0x7f09004f
 int id activity_chooser_view_content 0x7f090023
 int id always 0x7f09000f
 int id beginning 0x7f09000a
 int id bottom 0x7f090016
-int id button 0x7f090044
 int id buttongroup 0x7f090042
 int id checkbox 0x7f09002b
 int id collapseActionView 0x7f090011
@@ -665,6 +664,7 @@ int id none 0x7f090003
 int id normal 0x7f090000
 int id note_text 0x7f090041
 int id notes_list 0x7f09004a
+int id pinbutton 0x7f090044
 int id progress_circular 0x7f09001c
 int id progress_horizontal 0x7f09001d
 int id radio 0x7f09002d
