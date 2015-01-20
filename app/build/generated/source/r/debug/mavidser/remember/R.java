@@ -1881,15 +1881,16 @@ containing a value of this type.
         public static final int ic_action_content_add=0x7f020039;
         public static final int ic_action_content_archive=0x7f02003a;
         public static final int ic_action_content_create=0x7f02003b;
-        public static final int ic_drawer=0x7f02003c;
-        public static final int ic_launcher=0x7f02003d;
-        public static final int ic_remember_r=0x7f02003e;
-        public static final int line_divider=0x7f02003f;
-        public static final int logo2=0x7f020040;
-        public static final int navigation_drawer_shadow=0x7f020041;
+        public static final int ic_action_pin=0x7f02003c;
+        public static final int ic_drawer=0x7f02003d;
+        public static final int ic_launcher=0x7f02003e;
+        public static final int ic_remember_r=0x7f02003f;
+        public static final int line_divider=0x7f020040;
+        public static final int logo2=0x7f020041;
+        public static final int navigation_drawer_shadow=0x7f020042;
     }
     public static final class id {
-        public static final int action_archive=0x7f09004d;
+        public static final int action_archive=0x7f09004f;
         public static final int action_bar=0x7f090033;
         public static final int action_bar_activity_content=0x7f090017;
         public static final int action_bar_container=0x7f090032;
@@ -1898,14 +1899,14 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f090021;
         public static final int action_bar_title=0x7f090020;
         public static final int action_context_bar=0x7f090034;
-        public static final int action_delete=0x7f09004e;
+        public static final int action_delete=0x7f090050;
         public static final int action_menu_divider=0x7f090019;
         public static final int action_menu_presenter=0x7f09001a;
         public static final int action_mode_bar=0x7f090030;
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
-        public static final int action_new_note=0x7f090050;
-        public static final int action_settings=0x7f09004f;
+        public static final int action_new_note=0x7f090052;
+        public static final int action_settings=0x7f090051;
         public static final int activity_chooser_view_content=0x7f090023;
         public static final int always=0x7f09000f;
         public static final int beginning=0x7f09000a;
@@ -1942,6 +1943,8 @@ containing a value of this type.
         public static final int note_text=0x7f090041;
         public static final int notes_list=0x7f09004a;
         public static final int pinbutton=0x7f090044;
+        public static final int pinned_icon=0x7f09004e;
+        public static final int pinned_icon_container=0x7f09004d;
         public static final int progress_circular=0x7f09001c;
         public static final int progress_horizontal=0x7f09001d;
         public static final int radio=0x7f09002d;

@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -30,6 +32,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         NoteInfo ci = NoteList.get(i);
         NoteViewHolder.vTitle.setText(ci.content);
         NoteViewHolder.vDate.setText(ci.date);
+        if(ci.pinned.equals("1"))
+            NoteViewHolder.vPinned.setVisibility(View.VISIBLE);
+        else
+            NoteViewHolder.vPinned.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -43,15 +49,21 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     public static class NoteViewHolder extends RecyclerView.ViewHolder {
         protected TextView vTitle;
-        protected TextView vContent;
         protected TextView vDate;
-        protected TextView vPinned;
-        protected TextView vArchived;
+        protected LinearLayout vPinned;
 
         public NoteViewHolder(View v) {
             super(v);
             vTitle = (TextView) v.findViewById(R.id.summary);
             vDate = (TextView) v.findViewById(R.id.date);
+            vPinned = (LinearLayout) v.findViewById(R.id.pinned_icon_container);
         }
+    }
+
+
+    public void refill(List<NoteInfo> notelist) {
+        NoteList.clear();
+        NoteList.addAll(notelist);
+        notifyDataSetChanged();
     }
 }

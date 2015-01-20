@@ -30,18 +30,43 @@
             android:textSize="@dimen/abc_text_size_medium_material"
             android:layout_margin="8dp" />
 
-        <TextView
-            android:text="Boo"
-            android:textColor="@color/link_text_material_light"
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="8dp"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:lines="1" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="Boo"
+                android:textColor="@color/link_text_material_light"
+                android:id="@+id/date"
+                android:gravity="left|center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:textSize="@dimen/abc_text_size_small_material"
+                android:lines="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|center"
+                android:id="@+id/pinned_icon_container"
+                android:visibility="invisible"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rotation="90.0"
+                    android:id="@+id/pinned_icon"
+                    android:background="@drawable/ic_action_pin"
+                    android:contentDescription="Pinned" />
+                </LinearLayout>
 
         </LinearLayout>
+
+        </LinearLayout>
+
 
 </LinearLayout>

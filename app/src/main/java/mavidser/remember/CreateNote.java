@@ -109,7 +109,7 @@ public class CreateNote extends ActionBarActivity {
             note.archived = "1";
         else
             note.archived = "0";
-        System.out.println(note.archived);
+//        System.out.println(note.archived);
         note.content = note_content.getText().toString().trim();
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -134,10 +134,15 @@ public class CreateNote extends ActionBarActivity {
 //    }
 
     public void updateNote(boolean pinned) {
+
         NoteInfo note = generateNote(pinned);
+
         if (note.content.isEmpty()) {
             archiveNote();
             return;
+        }
+        if(_PINNED) {
+            pin(note.content);
         }
         note.id = _ID;
 //        System.out.println("Setting pin as "+note.pinned);
@@ -152,6 +157,7 @@ public class CreateNote extends ActionBarActivity {
         NoteInfo note = generateNote(false);
         if(EDITING || !note.content.isEmpty()) {
             note.archived = "1";
+            note.pinned = "0";
             note.id = _ID;
             _ARCHIVED = true;
             new NotesContract().updateNote(getBaseContext(), note);
@@ -174,6 +180,22 @@ public class CreateNote extends ActionBarActivity {
                         .setContentText(note)
                         .setOngoing(true)
                         .setStyle(notiStyle);
+
+
+        Intent resultIntent = new Intent(this, CreateNote.class);
+        resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        resultIntent.putExtra("id",_ID);
+        resultIntent.putExtra("content",note);
+        resultIntent.putExtra("pinned",(_PINNED?"1":"0"));
+        resultIntent.putExtra("archived",(_ARCHIVED?"1":"0"));
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        mBuilder.setContentIntent(resultPendingIntent);
 
         NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.notify(Integer.parseInt(_ID), mBuilder.build());
@@ -208,15 +230,15 @@ public class CreateNote extends ActionBarActivity {
     public void onPause() {
         super.onPause();  // Always call the superclass method first
 //        System.out.println("Uh huh");
-
-        if (EDITING) {
-            if (_PINNED)
-                updateNote(true);
-            else
-                updateNote(false);
-        }
-        else {
-            saveNote(false);
+        if(!_ARCHIVED) {
+            if (EDITING) {
+                if (_PINNED)
+                    updateNote(true);
+                else
+                    updateNote(false);
+            } else {
+                saveNote(false);
+            }
         }
     }
 }

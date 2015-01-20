@@ -38,7 +38,7 @@ public class Notes extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private int _DRAWER;
     private OnFragmentInteractionListener mListener;
 
     private RecyclerView mRecyclerView;
@@ -77,12 +77,14 @@ public class Notes extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            _DRAWER = getArguments().getInt("position",0);
+            System.out.println("Drawer: "+_DRAWER);
         }
 
         run = new Runnable(){
             public void run(){
                 //reload content
-                noteslist = new NotesContract().readNotesList(myView, 1);
+                noteslist = new NotesContract().readNotesList(myView, _DRAWER);
                 ca = new NoteAdapter(noteslist);
                 recList.setAdapter(ca);
             }
@@ -129,7 +131,7 @@ public class Notes extends Fragment {
         recList.setLayoutManager(llm);
 
 //        NoteAdapter ca = new NoteAdapter(createList(30));
-        noteslist = new NotesContract().readNotesList(myView, 1);
+        noteslist = new NotesContract().readNotesList(myView, _DRAWER);
         ca = new NoteAdapter(noteslist);
 
 //        Button button = new Button(getActivity());
@@ -144,8 +146,18 @@ public class Notes extends Fragment {
     @Override
     public void onResume()
     {
-//        getActivity().runOnUiThread(run);
         super.onResume();
+
+        if (recList.getAdapter() == null) {
+            NoteAdapter eventLogAdapter = new NoteAdapter(new NotesContract().readNotesList(myView, _DRAWER));
+            recList.setAdapter(eventLogAdapter);
+        } else {
+            ((NoteAdapter)recList.getAdapter()).refill(new NotesContract().readNotesList(myView, _DRAWER));
+        }
+
+//        getActivity().runOnUiThread(run);
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

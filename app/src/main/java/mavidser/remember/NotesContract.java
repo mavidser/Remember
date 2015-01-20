@@ -94,7 +94,7 @@ public final class NotesContract {
         return ""+newRowId;
     }
 
-    public List<NoteInfo> readNotesList(View view,int TYPE) {
+    public List<NoteInfo> readNotesList(View view,int DRAWER) {
 
         NotesDbHelper mDbHelper = new NotesDbHelper(view.getContext());
 
@@ -109,7 +109,16 @@ public final class NotesContract {
         };
 
         String sortOrder = NoteEntry._ID + " DESC";
-        String selection = NoteEntry.COLUMN_NAME_ARCHIVED + " ='0'";
+        String selection;
+        if (DRAWER == 0)
+            selection = NoteEntry.COLUMN_NAME_ARCHIVED + " ='0'";
+        else if(DRAWER == 1)
+            selection = NoteEntry.COLUMN_NAME_PINNED + " ='1'";
+        else if(DRAWER == 2)
+            selection = NoteEntry.COLUMN_NAME_ARCHIVED + " ='1'";
+        else
+            selection = NoteEntry.COLUMN_NAME_ARCHIVED + " ='0'";
+
 
         Cursor cursor = db.query(
                 NoteEntry.TABLE_NAME,  // The table to query
