@@ -17,10 +17,8 @@ public final class R {
         public static final int abc_slide_out_top=0x7f040005;
     }
     public static final class array {
-        public static final int pref_example_list_titles=0x7f060000;
-        public static final int pref_example_list_values=0x7f060001;
-        public static final int pref_sync_frequency_titles=0x7f060002;
-        public static final int pref_sync_frequency_values=0x7f060003;
+        public static final int pref_notif_frequency_titles=0x7f060000;
+        public static final int pref_notif_frequency_values=0x7f060001;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -2034,22 +2032,14 @@ containing a value of this type.
         public static final int drawer_open=0x7f0c0012;
         public static final int hello_blank_fragment=0x7f0c0013;
         public static final int hello_world=0x7f0c0014;
-        public static final int pref_default_display_name=0x7f0c0015;
-        public static final int pref_description_social_recommendations=0x7f0c0016;
-        public static final int pref_header_data_sync=0x7f0c0017;
-        public static final int pref_header_general=0x7f0c0018;
-        public static final int pref_header_notifications=0x7f0c0019;
-        public static final int pref_ringtone_silent=0x7f0c001a;
-        public static final int pref_title_add_friends_to_messages=0x7f0c001b;
-        public static final int pref_title_display_name=0x7f0c001c;
-        public static final int pref_title_new_message_notifications=0x7f0c001d;
-        public static final int pref_title_ringtone=0x7f0c001e;
-        public static final int pref_title_social_recommendations=0x7f0c001f;
-        public static final int pref_title_sync_frequency=0x7f0c0020;
-        public static final int pref_title_system_sync_settings=0x7f0c0021;
-        public static final int pref_title_vibrate=0x7f0c0022;
-        public static final int title_activity_create_note=0x7f0c0023;
-        public static final int title_activity_settings=0x7f0c0024;
+        public static final int pref_header_notifications=0x7f0c0015;
+        public static final int pref_title_notif_enable=0x7f0c0016;
+        public static final int pref_title_notif_enable_summary=0x7f0c0017;
+        public static final int pref_title_notif_frequency=0x7f0c0018;
+        public static final int pref_title_notif_sound=0x7f0c0019;
+        public static final int pref_title_notif_vibrate=0x7f0c001a;
+        public static final int title_activity_create_note=0x7f0c001b;
+        public static final int title_activity_settings=0x7f0c001c;
     }
     public static final class style {
         public static final int AppTheme=0x7f0d0000;
@@ -2291,10 +2281,8 @@ containing a value of this type.
         public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0d00e0;
     }
     public static final class xml {
-        public static final int pref_data_sync=0x7f050000;
-        public static final int pref_general=0x7f050001;
-        public static final int pref_headers=0x7f050002;
-        public static final int pref_notification=0x7f050003;
+        public static final int pref_general=0x7f050000;
+        public static final int pref_headers=0x7f050001;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.
